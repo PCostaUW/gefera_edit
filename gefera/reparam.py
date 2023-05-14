@@ -1,6 +1,10 @@
 #This file has functions that calculate the old parameter set from the new parameter set
 #These functions are called after the user inputs the new parameter values when initializing an orbit using orbits.py
 #These are needed because the orbit coordinates and flux are calculated using the old parameter set
+import numpy as np
+
+Pi = np.pi
+
 def ecc(ecosw,esinw):
     '''Calculates the eccentricity of the orbit.
     
