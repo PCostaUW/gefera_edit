@@ -77,10 +77,10 @@ class SatelliteOrbit(Orbit):
     """
     
     def __init__(self, a, phi, esinw, ecosw, o, p, b, m):
-        e=self.reparam.ecc(ecosw,esinw)
-        t=self.reparam.t2(phi,p)
-        w=self.reparam.omega(ecosw,esinw)
-        i=self.reparam.i2(b,a,ecosw,esinw)
+        e=ecc(ecosw,esinw)
+        t=t2(phi,p)
+        w=omega(ecosw,esinw)
+        i=i2(b,a,ecosw,esinw)
         super().__init__(a, t, e, p, w, i)
         self.o = o
         self.m = m
