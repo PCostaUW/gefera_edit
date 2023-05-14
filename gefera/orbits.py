@@ -49,10 +49,10 @@ class PrimaryOrbit(Orbit):
     """
    
     def __init__(self, T, t0, esinw, ecosw, p, b):
-        a = self.reparam.a1(p,b,T,ecosw,esinw)
-        t = self.reparam.t1(t0,p,ecosw,esinw)
-        e = self.reparam.ecc(ecosw,esinw)
-        w = self.reparam.omega(ecosw,esinw)
+        a = a1(p,b,T,ecosw,esinw)
+        t = t1(t0,p,ecosw,esinw)
+        e = ecc(ecosw,esinw)
+        w = omega(ecosw,esinw)
         super().__init__(a, t, e, p, w, i)
         
     def pdict(self):
