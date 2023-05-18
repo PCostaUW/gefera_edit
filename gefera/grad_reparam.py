@@ -1,4 +1,5 @@
 import numpy as np
+from .reparam import *
 
 Pi = np.pi
 
@@ -75,7 +76,7 @@ def drhodw(e,w):
 
 #derivative of old paramaters with respect to new
 def di2db(a,esinw,ecosw,b):
-    return -(1+esinw)/(a*(1-def_e(ecosw,esinw)**2)*np.sqrt(1-b**2*(1+esinw)**2/(1-def_e(ecosw,esinw)**2)**2/a**2))
+    return -(1+esinw)/(a*(1-ecc(ecosw,esinw)**2)*np.sqrt(1-b**2*(1+esinw)**2/(1-ecc(ecosw,esinw)**2)**2/a**2))
 
 def di2decosw(b,a,esinw,ecosw):
     c = ecosw
