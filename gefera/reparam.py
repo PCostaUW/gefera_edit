@@ -42,7 +42,7 @@ def i1(b1,p1,T,ecosw,esinw):
         ecosw: component of eccentricity
         esinw: component of eccentricity
     '''
-    return np.arccos(b1/a1(p1,b1,T,ecosw,esinw)*(1+esinw)/(1-ecc(ecosw,esinw)**2))
+    return (b1/a1(p1,b1,T,ecosw,esinw)*(1+esinw)/(1-ecc(ecosw,esinw)**2))
 
 def i2(b2,a2,ecosw,esinw):
     '''Calculates the inclination of the moon's orbit.
