@@ -49,7 +49,7 @@ class PrimaryOrbit(Orbit):
     """
    
     def __init__(self, T, t0, esinw, ecosw, p, b):
-        a = a1(T,b,p,ecosw,esinw)
+        a = a1(p,b,T,ecosw,esinw)
         t = t1(t0,p,ecosw,esinw)
         e = ecc(ecosw,esinw)
         w = omega(ecosw,esinw)
