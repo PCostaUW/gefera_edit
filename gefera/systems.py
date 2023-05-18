@@ -252,7 +252,7 @@ class System:
             dfdr1 = grad['r1']
             
             new_params = {
-                'T':T(ep,pp,wp,ap,ip),
+                'T':def_T(ep,pp,wp,ap,ip),
                 't0':t0(ep,wp,pp,tp),
                 'b1':b(ap,ip,ep,wp),
                 'phi':phi(tm,pm),
