@@ -269,6 +269,15 @@ class System:
 
             }
             
+            e1cosw = new_params['e1cosw1']
+            e1sinw = new_params['e1sinw1']
+            e2cosw = new_params['e2cosw2']
+            e2sinw = new_params['e2sinw2']
+            b1 = new_params['b1']
+            T = new_params['T']
+            p1 = new_params['P1']
+            b2 = new_params['b2']
+            
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
