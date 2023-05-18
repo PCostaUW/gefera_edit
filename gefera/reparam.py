@@ -68,3 +68,31 @@ def t1(t0,p,ecosw,esinw):
     '''
     return t0+p*np.sqrt(1-ecc(ecosw,esinw)**2)/(2*Pi)*(ecc(ecosw,esinw)*np.sin(1.5*Pi-omega(ecosw,esinw))/(1+ecc(ecosw,esinw)*np.cos(1.5*Pi-omega(ecosw,esinw))) - 2/np.sqrt(1-ecc(ecosw,esinw)**2)*atan2(np.sqrt(1-ecc(ecosw,esinw)**2)*np.tan(0.75*Pi-0.5*omega(ecosw,esinw)),(1+ecc(ecosw,esinw))))
 
+#reparameterizing omega,t_p to t0
+#this is used to calculate the mid-transit times of the barycenter about the star and the moon about the the barycenter
+#inspired by Agol https://github.com/ericagol/TRAPPIST1_Spitzer/blob/master/src/NbodyGradient/src/kepler_init.jl
+#t0: time of mid transit
+def t0(e,w,p,tp):
+    '''Reparameterizes t0 in terms of e,w,p,tp'''
+    t0 = tp-p*np.sqrt(1-e**2)/(2*Pi)*(e*np.sin(1.5*Pi-w)/(1+e*np.cos(1.5*Pi-w)) - 2/np.sqrt(1-e**2)*math.atan2(np.sqrt(1-e**2)*np.tan(0.75*Pi-0.5*w), (1+e)))
+    return t0
+
+def T(e,P,w,a,i):
+    '''Returns transit duration of the planet given:
+    e: eccentricity
+    P: orbital period
+    w: argument of periastron
+    a: semi major axis in terms of star radii
+    i: inclination
+    '''
+
+    T = P/Pi * (1-e**2)**1.5 / (1+e*np.sin(w))**2 *np.arcsin(np.sqrt(1-a**2*(1-e**2)**2/(1+e*np.sin(w))**2*np.cos(i)**2)/(a*(1-e**2)/(1+e*np.sin(w))*np.sin(i)))
+    return T
+
+def b(a,i,e,w):
+    b = a*np.cos(i)*(1-e**2)/(1+e*np.sin(w))
+    return b
+
+def phi(t,P):
+    phi = 2*np.pi*t/P
+    return phi

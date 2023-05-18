@@ -56,7 +56,7 @@ class PrimaryOrbit(Orbit):
         i = i1(b,p,T,ecosw,esinw)
         
         super().__init__(a, t, e, p, w, i)
-        print(vars(self).items())
+        
     def pdict(self):
         
         return {k + '1': v for k, v in vars(self).items()}
@@ -87,7 +87,7 @@ class SatelliteOrbit(Orbit):
         super().__init__(a, t, e, p, w, i)
         self.o = o
         self.m = m
-        print(vars(self).items())
+        
         
     def pdict(self):
         

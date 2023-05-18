@@ -65,7 +65,6 @@ class System:
         self.o1 = o1
         self.o2 = o2
         self.pdict = {**o1.pdict(), **o2.pdict()}
-        print(self.pdict)
             
     def coords(self, t):
         
@@ -250,7 +249,25 @@ class System:
             dfdP1 = grad['p1']
             dfdP2 = grad['p2']
             dfdr1 = grad['r1']
+            
+            new_params = {
+                'T':T(ep,pp,wp,ap,ip),
+                't0':t0(ep,wp,pp,tp),
+                'b1':b(ap,ip,ep,wp),
+                'phi':phi(tm,pm),
+                'm2':mm,
+                'a2':am,
+                'b2':b(am,im,em,wm),
+                'P1':pp,
+                'P2':pm,
+                'e1cosw1':ep*np.cos(wp),
+                'e2cosw2':em*np.cos(wm),
+                'e1sinw1':ep*np.sin(wp),
+                'e2sinw2':em*np.sin(wm),
+                'o2':om
 
+            }
+            
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
