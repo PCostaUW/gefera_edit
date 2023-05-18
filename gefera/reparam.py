@@ -74,7 +74,7 @@ def t1(t0,p,ecosw,esinw):
 #t0: time of mid transit
 def t0(e,w,p,tp):
     '''Reparameterizes t0 in terms of e,w,p,tp'''
-    t0 = tp-p*np.sqrt(1-e**2)/(2*Pi)*(e*np.sin(1.5*Pi-w)/(1+e*np.cos(1.5*Pi-w)) - 2/np.sqrt(1-e**2)*math.atan2(np.sqrt(1-e**2)*np.tan(0.75*Pi-0.5*w), (1+e)))
+    t0 = tp-p*np.sqrt(1-e**2)/(2*Pi)*(e*np.sin(1.5*Pi-w)/(1+e*np.cos(1.5*Pi-w)) - 2/np.sqrt(1-e**2)*atan2(np.sqrt(1-e**2)*np.tan(0.75*Pi-0.5*w), (1+e)))
     return t0
 
 def T(e,P,w,a,i):
