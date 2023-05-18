@@ -53,8 +53,8 @@ class PrimaryOrbit(Orbit):
         t = t1(t0,p,ecosw,esinw)
         e = ecc(ecosw,esinw)
         w = omega(ecosw,esinw)
-        i = i1(b,p,T,ecosw,esinw)
-        print(a)
+        print(i1(b,p,T,ecosw,esinw))
+        
         a2=215
         t2=-91.25
         e2=0.1
