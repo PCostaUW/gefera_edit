@@ -8,6 +8,7 @@ from .phot import flux, flux_ng
 from .kep import Kepler
 from .orbits import *
 from .grad_reparam import *
+from .reparam import *
 __all__ = ['HierarchicalSystem', 'ConfocalSystem']
 
 path, _ = os.path.split(__file__)
