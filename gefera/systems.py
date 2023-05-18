@@ -7,6 +7,7 @@ import fnmatch
 from .phot import flux, flux_ng
 from .kep import Kepler
 from .orbits import *
+from .grad_reparam import *
 __all__ = ['HierarchicalSystem', 'ConfocalSystem']
 
 path, _ = os.path.split(__file__)
@@ -64,6 +65,7 @@ class System:
         self.o1 = o1
         self.o2 = o2
         self.pdict = {**o1.pdict(), **o2.pdict()}
+        print(self.pdict)
             
     def coords(self, t):
         
@@ -228,12 +230,61 @@ class System:
                 for i in range(np.shape(df)[0])
             }
             
+            #something happens here to translate into new param system
+            
+            
+            
             # order?
             grad['r1'] = f[1]
             grad['r2'] = f[2]
             grad['u1'] = f[6]
             grad['u2'] = f[7]
+            '''
+            ap,tp,ep,pp,wp,ip,am,tm,em,pm,om,wm,im,mm = self.pdict
+            rp 
+            rm 
+            u1 
+            u2 
             
+            
+            dfdt0 = grad['t1']
+            dfdm2 = grad['m2']
+            dfdr2 = grad['r2']
+            dfda2 = grad['a2']
+            dfdP1 = grad['p1']
+            dfdP2 = grad['p2']
+            dfdr1 = grad['r1']
+
+            dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
+            dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
+            dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
+            dfdb2 = grad['i2']*di2db(am,new_params['e2sinw2'],new_params['e2cosw2'],new_params['b2'])
+            dfdsig1 = grad['e1']*de1decosw(e1sinw,e1cosw) + grad['a1']*dadecosw(b1,T,p1,e1sinw,e1cosw) + grad['i1']*di1decosw(b1,T,p1,e1sinw,e1cosw) + grad['w1']*dw1decosw(e1sinw,e1cosw) + grad['t1']*dtpdecosw(p1,e1sinw,e1cosw)
+            dfdsig2 = grad['e2']*de1decosw(e2sinw,e2cosw) + grad['w2']*dw1decosw(e2sinw,e2cosw) + grad['i2']*di2decosw(b2,am,e2sinw,e2cosw)
+            dfdrho1 = grad['e1']*de1desinw(e1sinw,e1cosw) + grad['a1']*dadesinw(b1,T,p1,e1sinw,e1cosw) + grad['i1']*di1desinw(b1,T,p1,e1sinw,e1cosw) + grad['w1']*dw1desinw(e1sinw,e1cosw) + grad['t1']*dtpdesinw(p1,e1sinw,e1cosw)
+            dfdrho2 = grad['e2']*de1desinw(e2sinw,e2cosw) + grad['w2']*dw1desinw(e2sinw,e2cosw) + grad['i2']*di2desinw(b2,am,e2sinw,e2cosw)
+            
+            new_grad = {
+                'T':dfdT,
+                't0':dfdt0,
+                'b1':dfdb1,
+                'r1':dfdr1,
+                'phi':dfdphi,
+                'm2':dfdm2,
+                'r2':dfdr2,
+                'a2':dfda2,
+                'b2':dfdb2,
+                'P1':dfdP1,
+                'P2':dfdP2,
+                'e1cosw1':dfdsig1,
+                'e2cosw2':dfdsig2,
+                'e1sinw1':dfdrho1,
+                'e2sinw2':dfdrho2,
+                'o2':grad['o2'],
+                'u1':grad['u1'],
+                'u2':grad['u2']
+            }
+            '''
             return lc, grad
         
         else:
