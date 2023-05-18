@@ -87,7 +87,7 @@ class SatelliteOrbit(Orbit):
         super().__init__(a, t, e, p, w, i)
         self.o = o
         self.m = m
-        print(vars(self).items()
+        print(vars(self).items())
         
     def pdict(self):
         
