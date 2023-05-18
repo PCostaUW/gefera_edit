@@ -239,12 +239,8 @@ class System:
             grad['r2'] = f[2]
             grad['u1'] = f[6]
             grad['u2'] = f[7]
-            '''
-            ap,tp,ep,pp,wp,ip,am,tm,em,pm,om,wm,im,mm = self.pdict
-            rp 
-            rm 
-            u1 
-            u2 
+            
+            ap,tp,ep,pp,wp,ip,am,tm,em,pm,wm,im,om,mm = self.pdict.values()
             
             
             dfdt0 = grad['t1']
@@ -284,8 +280,8 @@ class System:
                 'u1':grad['u1'],
                 'u2':grad['u2']
             }
-            '''
-            return lc, grad
+            
+            return lc, new_grad
         
         else:
             bp, bpm, theta = self.kep.impacts(
