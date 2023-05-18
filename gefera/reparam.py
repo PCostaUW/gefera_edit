@@ -22,7 +22,7 @@ def t2(phi,p2):
         p2: The orbital period of the moon about the planet'''
     return phi*p2/(2*Pi)
 
-def a1(T,b1,p1,ecosw,esinw):
+def a1(p1,b1,T,ecosw,esinw):
     '''Calculates the semi-major axis of the planet's orbit.
     Args:
         T: transit duration
@@ -41,11 +41,8 @@ def i1(b1,p1,T,ecosw,esinw):
         ecosw: component of eccentricity
         esinw: component of eccentricity
     '''
-    print(b1)
-    print(a1(p1,b1,T,ecosw,esinw))
-    print(esinw)
-    print(ecc(ecosw,esinw)**2)
-    return (b1/a1(p1,b1,T,ecosw,esinw)*(1+esinw)/(1-ecc(ecosw,esinw)**2))
+    
+    return np.arccos(b1/a1(p1,b1,T,ecosw,esinw)*(1+esinw)/(1-ecc(ecosw,esinw)**2))
 
 def i2(b2,a2,ecosw,esinw):
     '''Calculates the inclination of the moon's orbit.
