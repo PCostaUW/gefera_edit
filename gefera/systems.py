@@ -247,7 +247,6 @@ class System:
             dfdm2 = grad['m2']
             dfdr2 = grad['r2']
             dfda2 = grad['a2']
-            
             dfdP2 = grad['p2']
             dfdr1 = grad['r1']
             
@@ -279,7 +278,7 @@ class System:
             b2 = new_params['b2']
             
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
-            dfdP1 = dfdT*dTdp(pp,ap,wp,ep,ip) + dfdt0*dt0dp(tp,ep,pp,wp)
+            dfdP1 = grad['a1']*dadp(b1,T,p1,e1sinw,e1cosw) + grad['i1']*didp(b1,T,p1,e1sinw,e1cosw) + grad['t1']*dtpdp(p1,e1sinw,e1cosw)
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
             dfdb2 = grad['i2']*di2db(am,new_params['e2sinw2'],new_params['e2cosw2'],new_params['b2'])

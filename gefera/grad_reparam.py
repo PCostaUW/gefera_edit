@@ -98,6 +98,11 @@ def dadecosw(b,T,p,esinw,ecosw):
     c = ecosw
     return -((3 *(1-b**2) *c *Pi *(1+s)**3 *T *1/np.tan((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2))) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)/(p *(1-c**2-s**2)**(7/2) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)))+(2 *c *(1+s) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2))/(1-c**2-s**2)**2
 
+def dadp(b,T,p,esinw,ecosw):
+    s = esinw
+    c = ecosw
+    return ((1-b**2) *Pi* (1+s)**3 *T *1/np.tan((Pi* (1+s)**2 *T)/(p* (1-c**2-s**2)**(3/2))) *1/np.sin((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)/(p**2 *(1-c**2-s**2)**(5/2) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2))
+
 def di1desinw(b,T,p,esinw,ecosw):
     s = esinw
     c = ecosw
@@ -108,6 +113,11 @@ def di1decosw(b,T,p,esinw,ecosw):
     c = ecosw
     return -((3 *b *(1-b**2) *c *Pi *(1+s)**2 *T *1/np.tan((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))* 1/np.sin((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)/(p *(1-c**2-s**2)**(5/2) *(b**2+(1-b**2) *1/np.sin((Pi* (1+s)**2 *T)/(p* (1-c**2-s**2)**(3/2)))**2)**(3/2) *np.sqrt(1-b**2/(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2))))
 
+def di1dp(b,T,p,esinw,ecosw):
+    s = esinw
+    c = ecosw
+    return (b *(1-b**2) *Pi* (1+s)**2 *T *1/np.tan((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2))) *1/np.sin((Pi* (1+s)**2 *T)/(p* (1-c**2-s**2)**(3/2)))**2)/(p**2 *(1-c**2-s**2)**(3/2)* (b**2+(1-b**2) *1/np.sin((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)**(3/2)* np.sqrt(1-b**2/(b**2+(1-b**2) *1/np.sin((Pi* (1+s)**2 *T)/(p* (1-c**2-s**2)**(3/2)))**2)))
+
 def dtpdesinw(p,esinw,ecosw):
     s = esinw
     c = ecosw
@@ -117,6 +127,11 @@ def dtpdecosw(p,esinw,ecosw):
     s = esinw
     c = ecosw
     return -((c *p* (-(c/(1-s))+(2 *np.arctan((np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *np.arctan(s/c)))/(1+np.sqrt(c**2+s**2))))/np.sqrt(1-c**2-s**2)))/(2* Pi *np.sqrt(1-c**2-s**2)))+(p *np.sqrt(1-c**2-s**2)* (-(1/(1-s))+(2 *c *np.arctan((np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *np.arctan(s/c)))/(1+np.sqrt(c**2+s**2))))/(1-c**2-s**2)**(3/2)+(2 *(-((s* np.sqrt(1-c**2-s**2)* 1/np.cos(Pi/4+1/2 *np.arctan(s/c))**2)/(2* c**2 *(1+s**2/c**2)* (1+np.sqrt(c**2+s**2))))-(c* np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *np.arctan(s/c)))/(np.sqrt(c**2+s**2) *(1+np.sqrt(c**2+s**2))**2)-(c *np.tan(Pi/4+1/2 *np.arctan(s/c)))/(np.sqrt(1-c**2-s**2) *(1+np.sqrt(c**2+s**2)))))/(np.sqrt(1-c**2-s**2) *(1+((1-c**2-s**2) *np.tan(Pi/4+1/2 *np.arctan(s/c))**2)/(1+np.sqrt(c**2+s**2))**2))))/(2 *Pi)
+
+def dtpdp(p,esinw,ecosw):
+    c = ecosw
+    s = esinw
+    return (np.sqrt(1-c**2-s**2) *(-(c/(1-s))+(2 *np.arctan((np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *np.arctan(s/c)))/(1+np.sqrt(c**2+s**2))))/np.sqrt(1-c**2-s**2)))/(2* Pi)
 
 def de1desinw(esinw,ecosw):
     return esinw/np.sqrt(esinw**2+ecosw**2)
