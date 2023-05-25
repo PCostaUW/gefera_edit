@@ -278,7 +278,7 @@ class System:
             b2 = new_params['b2']
             
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
-            dfdP1 = grad['a1']*dadp(b1,T,p1,e1sinw,e1cosw) + grad['i1']*didp(b1,T,p1,e1sinw,e1cosw) + grad['t1']*dtpdp(p1,e1sinw,e1cosw)
+            dfdP1 = grad['a1']*dadp(b1,T,p1,e1sinw,e1cosw) + grad['i1']*di1dp(b1,T,p1,e1sinw,e1cosw) + grad['t1']*dtpdp(p1,e1sinw,e1cosw)
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
             dfdb2 = grad['i2']*di2db(am,new_params['e2sinw2'],new_params['e2cosw2'],new_params['b2'])
