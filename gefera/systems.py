@@ -240,6 +240,8 @@ class System:
             grad['u1'] = f[6]
             grad['u2'] = f[7]
             
+            print(self.pdict.keys())
+            
             ap,tp,ep,pp,wp,ip,am,tm,em,pm,wm,im,om,mm = self.pdict.values()
             
             
