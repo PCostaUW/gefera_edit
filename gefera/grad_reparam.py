@@ -99,10 +99,10 @@ def dadecosw(b,T,p,esinw,ecosw):
     return -((3 *(1-b**2) *c *Pi *(1+s)**3 *T *1/np.tan((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2))) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)/(p *(1-c**2-s**2)**(7/2) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)))+(2 *c *(1+s) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2))/(1-c**2-s**2)**2
 
 def dadp(b,T,p,esinw,ecosw):
-    #s = esinw
-    #c = ecosw
-    #return ((1-b**2) *Pi* (1+s)**3 *T *1/np.tan((Pi* (1+s)**2 *T)/(p* (1-c**2-s**2)**(3/2))) *1/np.sin((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)/(p**2 *(1-c**2-s**2)**(5/2) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2))
-    return 2/3*p**(-1/3)
+    s = esinw
+    c = ecosw
+    return ((1-b**2) *Pi* (1+s)**3 *T *1/np.tan((Pi* (1+s)**2 *T)/(p* (1-c**2-s**2)**(3/2))) *1/np.sin((Pi* (1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2)/(p**2 *(1-c**2-s**2)**(5/2) *np.sqrt(b**2+(1-b**2) *1/np.sin((Pi *(1+s)**2 *T)/(p *(1-c**2-s**2)**(3/2)))**2))
+    #return 2/3*p**(-1/3)
 def di1desinw(b,T,p,esinw,ecosw):
     s = esinw
     c = ecosw
