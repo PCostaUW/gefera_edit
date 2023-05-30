@@ -31,7 +31,8 @@ def a1(p1,b1,T,ecosw,esinw):
         ecosw: eccentricity multiplied by cos of the argument of periastron w
         esinw: eccentricity multiplied by sin of the argument of periastron w
     '''
-    return np.sqrt((1-b1**2)/(np.sin(Pi*T/p1*(1+esinw)**2/(1-ecc(ecosw,esinw)**2)**(3/2))**2)+b1**2)*(1+esinw)/(1-ecc(ecosw,esinw)**2)
+    #return np.sqrt((1-b1**2)/(np.sin(Pi*T/p1*(1+esinw)**2/(1-ecc(ecosw,esinw)**2)**(3/2))**2)+b1**2)*(1+esinw)/(1-ecc(ecosw,esinw)**2)
+    return 2/3*p1**(-1/3)
 def i1(b1,p1,T,ecosw,esinw):
     '''Calculates the inclination of the planet's orbit.
     Args:
