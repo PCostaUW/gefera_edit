@@ -280,7 +280,7 @@ class System:
             
 
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
-            dfdP1 = grad['T']*dTdp(pp,ap,wp,ep,ip)
+            dfdP1 = dfdT*dTdp(pp,ap,wp,ep,ip)
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
             dfdb2 = grad['i2']*di2db(am,e2sinw,e2cosw,b2)
