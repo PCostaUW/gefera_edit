@@ -48,12 +48,12 @@ class PrimaryOrbit(Orbit):
         b: impact parameter
     """
    
-    def __init__(self, a, t, e, p,w, i):
-        '''a = a1(p,b,T,ecosw,esinw)
+    def __init__(self, T, t0, esinw, ecosw,p, b):
+        a = a1(p,b,T,ecosw,esinw)
         t = t1(t0,p,ecosw,esinw)
         e = ecc(ecosw,esinw)
         w = omega(ecosw,esinw)
-        i = i1(b,p,T,ecosw,esinw)'''
+        i = i1(b,p,T,ecosw,esinw)
         
         super().__init__(a, t, e, p, w, i)
         
@@ -77,11 +77,11 @@ class SatelliteOrbit(Orbit):
         m: Moon/planet mass ratio
     """
     
-    def __init__(self, a, t, e, p, o, w, i,m):
-        '''e=ecc(ecosw,esinw)
+    def __init__(self, a, phi, esinw, ecosw, o, p, b,m):
+        e=ecc(ecosw,esinw)
         t=t2(phi,p)
         w=omega(ecosw,esinw)
-        i=i2(b,a,ecosw,esinw)'''
+        i=i2(b,a,ecosw,esinw)
         
         
         super().__init__(a, t, e, p, w, i)

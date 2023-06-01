@@ -240,7 +240,7 @@ class System:
             grad['u1'] = f[6]
             grad['u2'] = f[7]
             
-            '''
+            
             ap,tp,ep,pp,wp,ip,am,tm,em,pm,wm,im,om,mm = self.pdict.values()
             
             
@@ -278,8 +278,9 @@ class System:
             p1 = new_params['P1']
             b2 = new_params['b2']
             
+            dfdP1 = grad['p1']
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
-            dfdP1 = grad['a1']*dadp(b1,T,p1,e1sinw,e1cosw) + grad['i1']*di1dp(b1,T,p1,e1sinw,e1cosw) + grad['t1']*dtpdp(p1,e1sinw,e1cosw)
+            #dfdP1 = grad['a1']*dadp(b1,T,p1,e1sinw,e1cosw) + grad['i1']*di1dp(b1,T,p1,e1sinw,e1cosw) + grad['t1']*dtpdp(p1,e1sinw,e1cosw)
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
             dfdb2 = grad['i2']*di2db(am,e2sinw,e2cosw,b2)
@@ -307,9 +308,9 @@ class System:
                 'o2':grad['o2'],
                 'u1':grad['u1'],
                 'u2':grad['u2']
-            }'''
+            }
             
-            return lc, grad
+            return lc, new_grad
         
         else:
             bp, bpm, theta = self.kep.impacts(

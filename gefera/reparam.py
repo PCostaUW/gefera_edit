@@ -57,7 +57,10 @@ def i2(b2,a2,ecosw,esinw):
 
 def omega(ecosw,esinw):
     '''Calculates the argument of periastron from the compenents of eccentricity'''
-    return np.arctan(esinw/ecosw)
+    if ecosw == 0:
+        return Pi/2
+    else:
+        return np.arctan(esinw/ecosw)
 
 def t1(t0,p,ecosw,esinw):
     '''Calculates the time of periastron passage of the planet.
