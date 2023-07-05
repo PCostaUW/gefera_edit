@@ -277,6 +277,7 @@ class System:
             p1 = new_params['P1']
             b2 = new_params['b2']
             
+            
 
             dfdT = (grad['i1']-grad['a1']*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))/(dTdi(pp,ap,wp,ep,ip)-dTda(pp,ap,wp,ep,ip)*dbdi(ap,ip,ep,wp)/dbda(ap,ip,ep,wp))
             dfdb1 = (grad['i1']-dfdT*dTdi(pp,ap,wp,ep,ip))/dbdi(ap,ip,ep,wp)
