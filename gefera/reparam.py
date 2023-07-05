@@ -71,7 +71,7 @@ def t1(t0,p,ecosw,esinw):
         esinw: component of eccentricity
     '''
     if ecosw <= 1e-20:
-        t0 - 0.75*p + p*omega(ecosw,esinw)/(2*Pi)
+        t0 -p/2
     else:
         return t0+p*np.sqrt(1-ecc(ecosw,esinw)**2)/(2*Pi)*(ecc(ecosw,esinw)*np.sin(1.5*Pi-omega(ecosw,esinw))/(1+ecc(ecosw,esinw)*np.cos(1.5*Pi-omega(ecosw,esinw))) - 2/np.sqrt(1-ecc(ecosw,esinw)**2)*atan2(np.sqrt(1-ecc(ecosw,esinw)**2)*np.tan(0.75*Pi-0.5*omega(ecosw,esinw)),(1+ecc(ecosw,esinw))))
 
@@ -80,7 +80,7 @@ def t1(t0,p,ecosw,esinw):
 def t0(e,w,p,tp):
     '''Reparameterizes t0 in terms of e,w,p,tp'''
     if e <= 1e-20:
-        return tp + 0.75*p-p*w/(2*Pi)
+        return tp + p/2
     else:
         t0 = tp-p*np.sqrt(1-e**2)/(2*Pi)*(-e*np.cos(w)/(1-e*np.sin(w)) - 2/np.sqrt(1-e**2)*atan2(np.sqrt(1-e**2)*np.tan(0.75*Pi-0.5*w), (1+e)))
         return t0
