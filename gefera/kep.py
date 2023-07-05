@@ -29,7 +29,7 @@ __args__ = [
 def validate_elements(argdict, arglist):
     
     if set(argdict.keys()) == set(arglist):
-        
+        print(argdict.keys(),arglist)
         argdict = {
             k: byref(ctypes.c_double(v)) 
             for k, v in argdict.items()
