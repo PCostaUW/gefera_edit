@@ -54,7 +54,7 @@ class PrimaryOrbit(Orbit):
         e = ecc(ecosw,esinw)
         w = omega(ecosw,esinw)
         i = i1(b,p,T,ecosw,esinw)
-        
+        print(a,t,e,p,w,i)
         super().__init__(a, t, e, p, w, i)
         
     def pdict(self):
@@ -83,7 +83,7 @@ class SatelliteOrbit(Orbit):
         w=omega(ecosw,esinw)
         i=i2(b,a,ecosw,esinw)
         
-        
+        print(a,t,e,p,w,i)
         super().__init__(a, t, e, p, w, i)
         self.o = o
         self.m = m
