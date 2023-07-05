@@ -71,17 +71,19 @@ def t1(t0,p,ecosw,esinw):
         esinw: component of eccentricity
     '''
     if ecosw <= 1e-20:
-        return t0
+        t0 - 0.75*p + p*omega(ecosw,esinw)/(2*Pi)
     else:
         return t0+p*np.sqrt(1-ecc(ecosw,esinw)**2)/(2*Pi)*(ecc(ecosw,esinw)*np.sin(1.5*Pi-omega(ecosw,esinw))/(1+ecc(ecosw,esinw)*np.cos(1.5*Pi-omega(ecosw,esinw))) - 2/np.sqrt(1-ecc(ecosw,esinw)**2)*atan2(np.sqrt(1-ecc(ecosw,esinw)**2)*np.tan(0.75*Pi-0.5*omega(ecosw,esinw)),(1+ecc(ecosw,esinw))))
+
 #reparameterizing omega,t_p to t0
 #this is used to calculate the mid-transit times of the barycenter about the star and the moon about the the barycenter
-#inspired by Agol https://github.com/ericagol/TRAPPIST1_Spitzer/blob/master/src/NbodyGradient/src/kepler_init.jl
-#t0: time of mid transit
 def t0(e,w,p,tp):
     '''Reparameterizes t0 in terms of e,w,p,tp'''
-    t0 = tp-p*np.sqrt(1-e**2)/(2*Pi)*(-e*np.cos(w)/(1-e*np.sin(w)) - 2/np.sqrt(1-e**2)*atan2(np.sqrt(1-e**2)*np.tan(0.75*Pi-0.5*w), (1+e)))
-    return t0
+    if e <= 1e-20:
+        return tp + 0.75*p-p*w/(2*Pi)
+    else:
+        t0 = tp-p*np.sqrt(1-e**2)/(2*Pi)*(-e*np.cos(w)/(1-e*np.sin(w)) - 2/np.sqrt(1-e**2)*atan2(np.sqrt(1-e**2)*np.tan(0.75*Pi-0.5*w), (1+e)))
+        return t0
 
 def def_T(e,P,w,a,i):
     '''Returns transit duration of the planet given:
