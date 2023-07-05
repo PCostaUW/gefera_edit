@@ -57,7 +57,7 @@ def i2(b2,a2,ecosw,esinw):
 
 def omega(ecosw,esinw):
     '''Calculates the argument of periastron from the compenents of eccentricity'''
-    if ecosw<=1e-5:
+    if ecosw<=1e-20:
         return np.sign(ecosw)*Pi/2
     else:
         return np.arctan(esinw/ecosw)
@@ -70,9 +70,10 @@ def t1(t0,p,ecosw,esinw):
         ecosw: component of eccentricity
         esinw: component of eccentricity
     '''
-    if ecosw <= 1e-5:
+    if ecosw <= 1e-20:
         return t0
-    return t0+p*np.sqrt(1-ecc(ecosw,esinw)**2)/(2*Pi)*(ecc(ecosw,esinw)*np.sin(1.5*Pi-omega(ecosw,esinw))/(1+ecc(ecosw,esinw)*np.cos(1.5*Pi-omega(ecosw,esinw))) - 2/np.sqrt(1-ecc(ecosw,esinw)**2)*atan2(np.sqrt(1-ecc(ecosw,esinw)**2)*np.tan(0.75*Pi-0.5*omega(ecosw,esinw)),(1+ecc(ecosw,esinw))))
+    else:
+        return t0+p*np.sqrt(1-ecc(ecosw,esinw)**2)/(2*Pi)*(ecc(ecosw,esinw)*np.sin(1.5*Pi-omega(ecosw,esinw))/(1+ecc(ecosw,esinw)*np.cos(1.5*Pi-omega(ecosw,esinw))) - 2/np.sqrt(1-ecc(ecosw,esinw)**2)*atan2(np.sqrt(1-ecc(ecosw,esinw)**2)*np.tan(0.75*Pi-0.5*omega(ecosw,esinw)),(1+ecc(ecosw,esinw))))
 #reparameterizing omega,t_p to t0
 #this is used to calculate the mid-transit times of the barycenter about the star and the moon about the the barycenter
 #inspired by Agol https://github.com/ericagol/TRAPPIST1_Spitzer/blob/master/src/NbodyGradient/src/kepler_init.jl
