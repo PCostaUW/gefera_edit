@@ -51,10 +51,10 @@ class PrimaryOrbit(Orbit):
     def __init__(self, T, t0, esinw, ecosw,p, b):
         a = a1(p,b,T,ecosw,esinw)
         t = t1(t0,p,ecosw,esinw)
+        print(t)
         e = ecc(ecosw,esinw)
         w = omega(ecosw,esinw)
         i = i1(b,p,T,ecosw,esinw)
-        print(a,t,e,p,w,i)
         super().__init__(a, t, e, p, w, i)
         
     def pdict(self):
