@@ -136,12 +136,14 @@ def dtpdp(p,esinw,ecosw):
 
 def de1desinw(esinw,ecosw):
     if ecosw <= 1e-20:
+        print('here')
         return 1
     else:
         return 1/np.sqrt(1+np.tan(omega(ecosw,esinw))**2)
 
 def de1decosw(esinw,ecosw):
     if ecosw <= 1e-20:
+        print('here')
         return 1
     else:
         return 1/np.sqrt(1+1/np.tan(omega(ecosw,esinw))**2)
