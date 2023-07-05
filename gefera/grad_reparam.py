@@ -132,7 +132,7 @@ def dtpdecosw(p,esinw,ecosw):
 def dtpdp(p,esinw,ecosw):
     c = ecosw
     s = esinw
-    return (np.sqrt(1-c**2-s**2) *(-(c/(1-s))+(2 *np.arctan((np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *np.arctan(s/c)))/(1+np.sqrt(c**2+s**2))))/np.sqrt(1-c**2-s**2)))/(2* Pi)
+    return (np.sqrt(1-c**2-s**2) *(-(c/(1-s))+(2 *np.arctan((np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *omega(ecosw,esinw)))/(1+np.sqrt(c**2+s**2))))/np.sqrt(1-c**2-s**2)))/(2* Pi)
 
 def de1desinw(esinw,ecosw):
     return 1/np.sqrt(1+np.tan(omega(ecosw,esinw))**2)
