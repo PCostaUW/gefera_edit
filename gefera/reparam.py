@@ -58,7 +58,10 @@ def i2(b2,a2,ecosw,esinw):
 def omega(ecosw,esinw):
     '''Calculates the argument of periastron from the compenents of eccentricity'''
     if ecosw<=1e-20:
-        return np.sign(ecosw)*Pi/2
+        if np.sign(ecosw) == 0:
+            return Pi/2
+        else:
+            return np.sign(ecosw)*Pi/2
     else:
         return np.arctan(esinw/ecosw)
 
