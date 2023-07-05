@@ -58,8 +58,9 @@ def dphidt(t,e,p,w):
 def dphide(t,e,p,w):
     return 2*Pi/p*(2 *e *np.arctan(((np.sqrt(1-e**2)* np.tan(1/2 *(3*Pi/2 -w))))/(1+e))/(1-e**2)**(3/2)+np.sqrt(1-e**2) *p *np.cos(3*Pi/2 -w) *np.sin(3*Pi/2 -w)/(2 *(1+e *np.cos(3*Pi/2 -w))**2)+e *p *np.sin(3*Pi/2 -w)/(2 *np.sqrt(1-e**2) *(1+e *np.cos(3*Pi/2 -w)))-(p/2*np.sin(1.5*Pi-w)*np.sqrt(1-e**2))/(1+e*np.cos(1.5*Pi-w))+2*(-e*np.tan(0.75*Pi-w/2)/((np.sqrt(1-e**2))*(1+e))-np.sqrt(1-e**2)*np.tan(0.75*Pi-w/2)/(1+e)**2)/(np.sqrt(1-e**2)*(1+np.tan(0.75*Pi-w/2)**2*(1-e**2)/(1+e)**2))+2*np.arctan(np.sqrt(1-e**2)/(1+e)*np.tan(0.75*Pi-w/2))/np.sqrt(1-e**2))
 def dphidp(t,e,p,w):
-    #return -4*Pi*np.arctan(np.sqrt((1-e**2)/(1+e)*np.tan(0.75*Pi-w/2)))/(p**2*np.sqrt(1-e**2))
-    return (-1/p**2)*2*Pi*t0(e,w,p,t)
+    esinw = e*np.sin(w)
+    ecosw = e*np.cos(w)
+    return (-1/p**2)*2*Pi*t0(e,w,p,t) + 2*Pi/p*dtpdp(p,esinw,ecosw)
 def dphidw(t,e,p,w):
     return 2*Pi/p*((p*np.sqrt(1-e**2)*np.cos(3*Pi/2-w))/(2*(1+e*np.cos(3*Pi/2-w)))+(p*e*np.sqrt(1-e**2)*np.sin(3*Pi/2-w)**2)/((2*(1+e*np.cos(3*Pi/2-w)))**2)-1/(np.cos(3*Pi/4-w/2)**2*(1+e)*(1+(1-e**2)/((1+e)**2)*np.tan(3*Pi/4-w/2))))
 
