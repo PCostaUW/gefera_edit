@@ -135,15 +135,10 @@ def dtpdp(p,esinw,ecosw):
     return (np.sqrt(1-c**2-s**2) *(-(c/(1-s))+(2 *np.arctan((np.sqrt(1-c**2-s**2) *np.tan(Pi/4+1/2 *omega(ecosw,esinw)))/(1+np.sqrt(c**2+s**2))))/np.sqrt(1-c**2-s**2)))/(2* Pi)
 
 def de1desinw(esinw,ecosw):
-    if ecosw <= 1e-20:
-        print('here')
-        return 1
-    else:
-        return 1/np.sqrt(1+np.tan(omega(ecosw,esinw))**2)
+    return 1/np.sqrt(1+np.tan(omega(ecosw,esinw))**2)
 
 def de1decosw(esinw,ecosw):
     if ecosw <= 1e-20:
-        print('here')
         return 1
     else:
         return 1/np.sqrt(1+1/np.tan(omega(ecosw,esinw))**2)
@@ -153,3 +148,17 @@ def dw1desinw(esinw,ecosw):
 
 def dw1decosw(esinw,ecosw):
     return -esinw/(ecosw**2+esinw**2)
+
+
+
+def desinwde(e,w):
+    return np.sin(w)
+    
+def decoswde(e,w):
+    return np.cos(w)
+
+def desinwdw(e,w):
+    return e*np.cos(w)
+
+def decoswdw(e,w):
+    retunr -e*np.sin(w)
