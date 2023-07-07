@@ -161,4 +161,4 @@ def desinwdw(e,w):
     return e*np.cos(w)
 
 def decoswdw(e,w):
-    retunr -e*np.sin(w)
+    return -e*np.sin(w)
