@@ -303,7 +303,7 @@ class System:
                 'b2':dfdb2,
                 'P1':dfdP1,
                 'P2':dfdP2,
-                'e1cosw1':dfdsig1,
+                'e1cosw1':dfde1cos,
                 'e2cosw2':dfdsig2,
                 'e1sinw1':dfdrho1,
                 'e2sinw2':dfdrho2,
