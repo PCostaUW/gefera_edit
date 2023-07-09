@@ -284,7 +284,7 @@ class System:
             dfdphi = grad['t2']/dphidt(tm,em,pm,wm)
             dfdb2 = grad['i2']*di2db(am,e2sinw,e2cosw,b2)
             dfdsig1 = grad['e1']*de1decosw(e1sinw,e1cosw) + grad['w1']*dw1decosw(e1sinw,e1cosw) + grad['a1']*dadecosw(b1,T,p1,e1sinw,e1cosw) + grad['i1']*di1decosw(b1,T,p1,e1sinw,e1cosw) + grad['t1']*dtpdecosw(p1,e1sinw,e1cosw)
-            #dfde1cos = (grad['w1']-dfdT*dTdw(pp,ap,wp,ep,ip)-dfdt0*dt0dw(tp,ep,pp,wp)-dfdb1*dbdw(ap,ip,ep,wp)-(grad['e1']-dfdT*dTde(pp,ap,wp,ep,ip)-dfdt0*dt0de(tp,ep,pp,wp)-dfdb1*dbde(ap,ip,ep,wp))/(desinwde(ep,wp)))/(decoswdw(ep,wp)-decoswde(ep,wp)*desinwdw(ep,wp)/desinwde(ep,wp))
+            dfde1cos = (grad['w1']-dfdT*dTdw(pp,ap,wp,ep,ip)-dfdt0*dt0dw(tp,ep,pp,wp)-dfdb1*dbdw(ap,ip,ep,wp)-(grad['e1']-dfdT*dTde(pp,ap,wp,ep,ip)-dfdt0*dt0de(tp,ep,pp,wp)-dfdb1*dbde(ap,ip,ep,wp))/(desinwde(ep,wp)))/(decoswdw(ep,wp)-decoswde(ep,wp)*desinwdw(ep,wp)/desinwde(ep,wp))
             dfdsig2 = grad['e2']*de1decosw(e2sinw,e2cosw) + grad['w2']*dw1decosw(e2sinw,e2cosw) + grad['i2']*di2decosw(b2,am,e2sinw,e2cosw)
             dfdrho1 = grad['e1']*de1desinw(e1sinw,e1cosw) + grad['i1']*di1desinw(b1,T,p1,e1sinw,e1cosw) + grad['w1']*dw1desinw(e1sinw,e1cosw) + grad['t1']*dtpdesinw(p1,e1sinw,e1cosw) + grad['a1']*dadesinw(b1,T,p1,e1sinw,e1cosw)
             dfdrho2 = grad['e2']*de1desinw(e2sinw,e2cosw) + grad['w2']*dw1desinw(e2sinw,e2cosw) + grad['i2']*di2desinw(b2,am,e2sinw,e2cosw)
@@ -303,7 +303,7 @@ class System:
                 'b2':dfdb2,
                 'P1':dfdP1,
                 'P2':dfdP2,
-                'e1cosw1':dfdsig1,
+                'e1cosw1':dfde1cos,
                 'e2cosw2':dfdsig2,
                 'e1sinw1':dfdrho1,
                 'e2sinw2':dfdrho2,
